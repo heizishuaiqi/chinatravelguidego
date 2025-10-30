@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Image Test</title>
+    <style>
+        .test-image {
+            width: 400px;
+            height: 300px;
+            border: 2px solid #ccc;
+            margin: 10px;
+            object-fit: cover;
+        }
+        .error {
+            color: red;
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Food Image Loading Test</h1>
+    <p>Testing if food images can be loaded directly...</p>
+    
+    <h2>川菜 (Sichuan Cuisine)</h2>
+    <img src="/images/food/dishes/covers/mapo-tofu-cover.WEBP" alt="Mapo Tofu" class="test-image" 
+         onload="console.log('✅ mapo-tofu-cover loaded')" 
+         onerror="console.log('❌ mapo-tofu-cover failed'); this.classList.add('error')">
+    
+    <img src="/images/food/dishes/covers/kung-pao-chicken-cover.WEBP" alt="Kung Pao Chicken" class="test-image"
+         onload="console.log('✅ kung-pao-chicken-cover loaded')" 
+         onerror="console.log('❌ kung-pao-chicken-cover failed'); this.classList.add('error')">
+    
+    <img src="/images/food/dishes/covers/sichuan-hot-pot-cover.WEBP" alt="Sichuan Hot Pot" class="test-image"
+         onload="console.log('✅ sichuan-hot-pot-cover loaded')" 
+         onerror="console.log('❌ sichuan-hot-pot-cover failed'); this.classList.add('error')">
+    
+    <h2>粤菜 (Cantonese Cuisine)</h2>
+    <img src="/images/food/dishes/covers/dim-sum-cover.WEBP" alt="Dim Sum" class="test-image"
+         onload="console.log('✅ dim-sum-cover loaded')" 
+         onerror="console.log('❌ dim-sum-cover failed'); this.classList.add('error')">
+    
+    <h2>地方特色 (Local Specialties)</h2>
+    <img src="/images/food/dishes/covers/roujiamo-cover.WEBP" alt="Roujiamo" class="test-image"
+         onload="console.log('✅ roujiamo-cover loaded')" 
+         onerror="console.log('❌ roujiamo-cover failed'); this.classList.add('error')">
+    
+    <script>
+        console.log('=== Image Test Started ===');
+        console.log('Check browser console for loading results');
+        
+        // Test if we can fetch an image
+        fetch('/images/food/dishes/covers/mapo-tofu-cover.WEBP')
+            .then(response => {
+                console.log('Fetch test for mapo-tofu-cover:', response.status, response.statusText);
+                if (response.ok) {
+                    console.log('✅ Image file accessible via fetch');
+                } else {
+                    console.log('❌ Image file not accessible via fetch');
+                }
+            })
+            .catch(error => {
+                console.log('❌ Fetch error:', error);
+            });
+    </script>
+</body>
+</html> 
